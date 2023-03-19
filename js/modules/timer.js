@@ -1,7 +1,5 @@
-function timer(timerSelector ,deadlineTime) {
+function timer(timerSelector ,deadlineTime, endtimeSelector) {
     //timer
-
-    const deadline = deadlineTime;
 
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(Date()),
@@ -38,6 +36,21 @@ function timer(timerSelector ,deadlineTime) {
         }
     }
 
+    const months = [
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря",
+    ]
+
 
     function setClock(selector, endtime) {
         const timer = document.querySelector(selector),
@@ -45,6 +58,7 @@ function timer(timerSelector ,deadlineTime) {
             hours = timer.querySelector('#hours'),
             minutes = timer.querySelector('#minutes'),
             seconds = timer.querySelector('#seconds'),
+            endtimeText = document.querySelector(endtimeSelector),
             timeInterval = setInterval(updateClock, 1000);
 
         updateClock();
@@ -56,6 +70,11 @@ function timer(timerSelector ,deadlineTime) {
             hours.innerHTML = setZero(t.hours);
             minutes.innerHTML = setZero(t.minutes);
             seconds.innerHTML = setZero(t.seconds);
+            endtimeText.innerHTML = `
+                Акция закончи${t.total == 0 ? 'лась' : 'тся' } <span> ${new Date(endtime).getDate()} ${months[new Date(endtime).getMonth()]} в 00:00
+            </span>
+            `
+            
 
             if (t.total <= 0) {
                 clearInterval(timeInterval);
@@ -64,8 +83,9 @@ function timer(timerSelector ,deadlineTime) {
 
     }
 
-    getTimeRemaining(deadline);
-    setClock(timerSelector, deadline)
+    getTimeRemaining(deadlineTime);
+    setClock(timerSelector, deadlineTime)
 }
 
 export default timer
+

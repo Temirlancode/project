@@ -1,6 +1,6 @@
 import { getResources } from "../services/services";
 
-function cards() {
+function cards(url) {
 // Используем классы для карточек
 
 class MenuCard {
@@ -47,7 +47,7 @@ class MenuCard {
 
 
 
-    getResources('http://localhost:3000/menu')
+    getResources(url)
         .then(data => {
             data.forEach(({img, altimg, title, descr, price}) => {
                 new MenuCard(img, altimg, title, descr, price, '.menu .container').render();

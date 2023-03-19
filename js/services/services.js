@@ -7,10 +7,8 @@ const postData = async (url, data) => { // async/await идут всегда в�
         body: data
     });
     return await res.json();
+    
 }
-
-export {postData}
-
 
 const getResources = async (url) => {
     const res = await fetch(url)
@@ -19,5 +17,7 @@ const getResources = async (url) => {
     }
     return await res.json();
 }
+
+export {postData}
 
 export {getResources}

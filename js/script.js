@@ -1,3 +1,6 @@
+require('es6-promise').polyfill();
+import 'nodelist-foreach-polyfill';
+
 import tabs from './modules/tabs'
 import cards from './modules/cards'
 import calc from './modules/calc'
@@ -13,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     tabs('.tabheader__items', '.tabheader__item', '.tabcontent', 'tabheader__item_active');
-    cards();
+    cards('http://localhost:3000/menu');
     calc();
     form(setTimerId, '.modal', 'form');
     modal('[data-modal]', '.modal', setTimerId );
@@ -28,7 +31,8 @@ window.addEventListener('DOMContentLoaded', () => {
         field: '.offer__slider-inner'
 
     });
-    timer('.timer', '2023-03-27');
+    timer('.timer', '2023-04-10', '.promotion__endtime');
+
 
     
     
