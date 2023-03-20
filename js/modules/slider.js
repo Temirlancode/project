@@ -2,22 +2,22 @@ function slider({container, slide, prevArrow, nextArrow, currCounter, totalCount
     // slider
 
     const slides = document.querySelectorAll(slide),
-          slider = document.querySelector(container),
-          prev = document.querySelector(prevArrow),
-          next = document.querySelector(nextArrow),
-          currId = document.querySelector(currCounter),
-          totalId = document.querySelector(totalCounter),
-          slidesWrapper = document.querySelector(wrapper),
-          slidesField = document.querySelector(field),
-          width = window.getComputedStyle(slidesWrapper).width,
-          dots =[]
+        slider = document.querySelector(container),
+        prev = document.querySelector(prevArrow),
+        next = document.querySelector(nextArrow),
+        currId = document.querySelector(currCounter),
+        totalId = document.querySelector(totalCounter),
+        slidesWrapper = document.querySelector(wrapper),
+        slidesField = document.querySelector(field),
+        width = window.getComputedStyle(slidesWrapper).width,
+        dots =[];
     let slideIndex = 1;
     let offset = 0;
 
 
     slidesField.style.width = 100 * slides.length + '%';
     slidesField.style.display = 'flex';
-    slidesField.style.transition = '0.5s all'
+    slidesField.style.transition = '0.5s all';
     slides.forEach(slide => {
         slide.style.width = width;
     });
@@ -35,32 +35,32 @@ function slider({container, slide, prevArrow, nextArrow, currCounter, totalCount
         dots.push(dot);
 
         if(i === 0) {
-            dot.style.opacity = 1
+            dot.style.opacity = 1;
         }
-    };
+    }
     
     function changeOpacityByDot() {
         dots.forEach(dot => {
-            dot.style.opacity = 0.5
+            dot.style.opacity = 0.5;
         });
 
-        dots[slideIndex-1].style.opacity = 1
+        dots[slideIndex-1].style.opacity = 1;
     }
 
     function changeTransformByOffset() {
-        slidesField.style.transform = `translateX(-${offset}px)`
+        slidesField.style.transform = `translateX(-${offset}px)`;
     }
 
     function currIdInner() {
         if(slideIndex < 10) {
-            currId.textContent = `0${slideIndex}`
+            currId.textContent = `0${slideIndex}`;
         } else {
-            currId.textContent = slideIndex
+            currId.textContent = slideIndex;
         }
     }
 
     function deleteNotDigits(body) {
-        return +body.replace(/\D/g, '')
+        return +body.replace(/\D/g, '');
     }
 
 
@@ -77,15 +77,15 @@ function slider({container, slide, prevArrow, nextArrow, currCounter, totalCount
 
     next.addEventListener('click', () => {
         if(offset === deleteNotDigits(width) * (slides.length-1)) {
-            offset = 0
+            offset = 0;
         } else {
-            offset += deleteNotDigits(width)
+            offset += deleteNotDigits(width);
         }
 
         changeTransformByOffset();
 
         if(slideIndex === slides.length) {
-            slideIndex = 1
+            slideIndex = 1;
         } else {
             slideIndex++;
         }
@@ -94,28 +94,28 @@ function slider({container, slide, prevArrow, nextArrow, currCounter, totalCount
 
         changeOpacityByDot();
 
-    }) 
+    }); 
 
     prev.addEventListener('click', () => {
         if(offset === 0) {
-            offset = deleteNotDigits(width) * (slides.length - 1)
+            offset = deleteNotDigits(width) * (slides.length - 1);
         } else {
-            offset -= deleteNotDigits(width)
+            offset -= deleteNotDigits(width);
         }
 
         changeTransformByOffset();
 
         if(slideIndex == 1) {
-            slideIndex = slides.length
+            slideIndex = slides.length;
         } else {
-            slideIndex--
+            slideIndex--;
         }
 
-        currIdInner()
+        currIdInner();
 
         changeOpacityByDot();
 
-    })
+    });
 
     dots.forEach(dot => {
         dot.addEventListener('click', (e) => {
@@ -128,8 +128,8 @@ function slider({container, slide, prevArrow, nextArrow, currCounter, totalCount
             currIdInner();
 
             changeOpacityByDot();
-        })
+        });
     });
 }
 
-export default slider
+export default slider;

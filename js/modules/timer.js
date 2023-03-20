@@ -15,7 +15,7 @@ function timer(timerSelector ,deadlineTime, endtimeSelector) {
                 'hours': 0,
                 'minutes': 0,
                 'seconds': 0
-            }
+            };
         } else {
             return {
                 'total': t,
@@ -25,31 +25,31 @@ function timer(timerSelector ,deadlineTime, endtimeSelector) {
                 'seconds': seconds
             };
         }
-    };
+    }
 
 
     function setZero(num) {
         if (num >= 0 && num < 10) {
             return `0${num}`;
         } else {
-            return num
+            return num;
         }
     }
 
     const months = [
-        "января",
-        "февраля",
-        "марта",
-        "апреля",
-        "мая",
-        "июня",
-        "июля",
-        "августа",
-        "сентября",
-        "октября",
-        "ноября",
-        "декабря",
-    ]
+        'января',
+        'февраля',
+        'марта',
+        'апреля',
+        'мая',
+        'июня',
+        'июля',
+        'августа',
+        'сентября',
+        'октября',
+        'ноября',
+        'декабря',
+    ];
 
 
     function setClock(selector, endtime) {
@@ -73,7 +73,7 @@ function timer(timerSelector ,deadlineTime, endtimeSelector) {
             endtimeText.innerHTML = `
                 Акция закончи${t.total == 0 ? 'лась' : 'тся' } <span> ${new Date(endtime).getDate()} ${months[new Date(endtime).getMonth()]} в 00:00
             </span>
-            `
+            `;
             
 
             if (t.total <= 0) {
@@ -84,8 +84,8 @@ function timer(timerSelector ,deadlineTime, endtimeSelector) {
     }
 
     getTimeRemaining(deadlineTime);
-    setClock(timerSelector, deadlineTime)
+    setClock(timerSelector, deadlineTime);
 }
 
-export default timer
+export default timer;
 

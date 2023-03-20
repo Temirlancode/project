@@ -1,5 +1,5 @@
-import { openModal, closeModal } from "./modal";
-import { postData } from "../services/services";
+import { openModal, closeModal } from './modal';
+import { postData } from '../services/services';
 
 
 function form(setTimerId, modalSelector, formSelector) {
@@ -11,7 +11,7 @@ function form(setTimerId, modalSelector, formSelector) {
         loading: 'img/form/spinner.svg',
         success: 'Спасибо! Мы с вами скоро свяжемся',
         fail: 'Что-то пошло не так'
-    }
+    };
 
 
     function bindPostData(form) {
@@ -27,19 +27,19 @@ function form(setTimerId, modalSelector, formSelector) {
             form.insertAdjacentElement('afterend', statusMessage);
 
             const formData = new FormData(form);
-            
-            const json = JSON.stringify(Object.fromEntries(formData.entries()))
+
+            const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
             postData('http://localhost:3000/requests', json)
-            .then(data => {
-                console.log(data);
-                showThanksModal(message.success);
-                statusMessage.remove();
-            }).catch(() => {
-                showThanksModal(message.fail)
-            }).finally(() => {
-                form.reset();
-            })
+                .then(data => {
+                    console.log(data);
+                    showThanksModal(message.success);
+                    statusMessage.remove();
+                }).catch(() => {
+                    showThanksModal(message.fail);
+                }).finally(() => {
+                    form.reset();
+                });
             // axios.post('http://localhost:3000/requests', Object.fromEntries(formData.entries()))
             //     .then(data => {
             //         console.log(data.data);
@@ -50,11 +50,11 @@ function form(setTimerId, modalSelector, formSelector) {
             //     }).finally(() => {
             //         form.reset();
             //     })
-        })
+        });
     }
 
     forms.forEach((item) => {
-        bindPostData(item)
+        bindPostData(item);
     });
 
     function showThanksModal(message) {
@@ -78,7 +78,7 @@ function form(setTimerId, modalSelector, formSelector) {
             modalDialog.classList.add('show');
             modalDialog.classList.remove('hide');
             closeModal('.modal');
-        }, 4000)
+        }, 4000);
     }
 
 }

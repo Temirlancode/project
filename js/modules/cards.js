@@ -1,37 +1,37 @@
-import { getResources } from "../services/services";
+import { getResources } from '../services/services';
 
 function cards(url) {
 // Используем классы для карточек
 
-class MenuCard {
-    constructor(src, alt, title, descr, price, parent, ...classes) {
-        this.src = src;
-        this.alt = alt;
-        this.title = title;
-        this.descr = descr;
-        this.price = price;
-        this.classes = classes;
-        this.transfer = 37;
-        this.USDtoUHD();
-        this.parent = document.querySelector(parent);
+    class MenuCard {
+        constructor(src, alt, title, descr, price, parent, ...classes) {
+            this.src = src;
+            this.alt = alt;
+            this.title = title;
+            this.descr = descr;
+            this.price = price;
+            this.classes = classes;
+            this.transfer = 37;
+            this.USDtoUHD();
+            this.parent = document.querySelector(parent);
 
-    }
-
-    USDtoUHD() {
-        this.price = this.price * this.transfer;
-    }
-
-    render() {
-        const element = document.createElement('div');
-        if (this.classes.length === 0) {
-            this.element = 'menu__item';
-            element.classList.add(this.element);
-        } else {
-            this.classes.forEach(className => {
-                element.classList.add(className);
-            })
         }
-        element.innerHTML = `
+
+        USDtoUHD() {
+            this.price = this.price * this.transfer;
+        }
+
+        render() {
+            const element = document.createElement('div');
+            if (this.classes.length === 0) {
+                this.element = 'menu__item';
+                element.classList.add(this.element);
+            } else {
+                this.classes.forEach(className => {
+                    element.classList.add(className);
+                });
+            }
+            element.innerHTML = `
                 <img src=${this.src} alt=${this.alt}>
                 <h3 class="menu__item-subtitle">${this.title}</h3>
                 <div class="menu__item-descr">${this.descr}</div>
@@ -40,10 +40,10 @@ class MenuCard {
                     <div class="menu__item-cost">Цена:</div>
                     <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
                 </div>
-        `
-        this.parent.append(element);
+        `;
+            this.parent.append(element);
+        }
     }
-}
 
 
 
@@ -51,9 +51,9 @@ class MenuCard {
         .then(data => {
             data.forEach(({img, altimg, title, descr, price}) => {
                 new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
-            })
+            });
             
-        })
+        });
 
     // axios.get('http://localhost:3000/menu')
     // .then(data => {

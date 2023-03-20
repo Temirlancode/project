@@ -9,10 +9,10 @@ function tabs(parentSelector, tabsSelector, contentSelector, active) {
         tabsContent.forEach(item => {
             item.classList.add('hide');
             item.classList.remove('show', 'fade');
-        })
+        });
         tabs.forEach(item => {
-            item.classList.remove(active)
-        })
+            item.classList.remove(active);
+        });
     }
 
     function showTabsContent(i = 0) {
@@ -34,9 +34,9 @@ function tabs(parentSelector, tabsSelector, contentSelector, active) {
                     hideTabsContent();
                     showTabsContent(i);
                 }
-            })
+            });
         }
-    })
+    });
 }
 
 export default tabs;

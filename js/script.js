@@ -1,14 +1,15 @@
+// eslint-disable-next-line no-undef
 require('es6-promise').polyfill();
 import 'nodelist-foreach-polyfill';
 
-import tabs from './modules/tabs'
-import cards from './modules/cards'
-import calc from './modules/calc'
-import form from './modules/form'
-import modal from './modules/modal'
-import slider from './modules/slider'
-import timer from './modules/timer'
-import { openModal } from './modules/modal'
+import tabs from './modules/tabs';
+import cards from './modules/cards';
+import calc from './modules/calc';
+import form from './modules/form';
+import modal from './modules/modal';
+import slider from './modules/slider';
+import timer from './modules/timer';
+import { openModal } from './modules/modal';
 
 window.addEventListener('DOMContentLoaded', () => {
     const setTimerId = setTimeout(() => openModal('.modal', setTimerId), 50000);
@@ -19,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     cards('http://localhost:3000/menu');
     calc();
     form(setTimerId, '.modal', 'form');
-    modal('[data-modal]', '.modal', setTimerId );
+    modal('[data-modal]', '.modal', setTimerId);
     slider({
         container: '.offer__slider',
         slide: '.offer__slide',
@@ -34,18 +35,21 @@ window.addEventListener('DOMContentLoaded', () => {
     timer('.timer', '2023-04-10', '.promotion__endtime');
 
 
-    
-    
-
-    
-    
-    
-
-    
 
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // showSlides(slideIndex);
@@ -91,5 +95,5 @@ window.addEventListener('DOMContentLoaded', () => {
     // next.addEventListener('click', () => {
     //     plusIndex(1)
     // })
-    
-}) 
+
+});
